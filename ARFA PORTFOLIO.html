@@ -52,7 +52,7 @@
   }
   </script>
 
-  <!-- Instant Theme Initializer in HEAD (Prevents FOUC & Guarantees Theme Setup) -->
+  <!-- Instant Theme Initializer in HEAD -->
   <script>
     (function() {
       try {
@@ -64,7 +64,7 @@
     })();
   </script>
 
-  <!-- Canvas Confetti -->
+  <!-- Canvas Confetti Library -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
 
   <style>
@@ -114,6 +114,7 @@
       --badge-bg: rgba(225, 130, 153, 0.18);
       --grid-line: rgba(230, 212, 191, 0.05);
       --nav-bg: rgba(18, 16, 25, 0.92);
+      --term-bg: #0C0A12;
     }
 
     /* CHIC SANDSTONE LIGHT THEME */
@@ -134,6 +135,7 @@
       --badge-bg: rgba(225, 130, 153, 0.2);
       --grid-line: rgba(135, 116, 153, 0.08);
       --nav-bg: rgba(250, 245, 238, 0.94);
+      --term-bg: #221E30;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -716,7 +718,7 @@
     .dot-sandstone { background: var(--color-sandstone); }
     .dot-viridian { background: var(--color-viridian); }
 
-    .cli-dot:hover { transform: scale(1.2); }
+    .cli-dot:hover { transform: scale(1.25); }
 
     .cli-title {
       font-family: var(--font-mono);
@@ -729,12 +731,14 @@
     }
 
     .cli-body {
-      padding: 22px;
+      padding: 20px;
       font-family: var(--font-mono);
       font-size: 0.84rem;
-      line-height: 1.7;
+      line-height: 1.65;
       max-height: 380px;
       overflow-y: auto;
+      background: var(--term-bg);
+      transition: background-color 0.3s ease;
     }
 
     .cli-output-area {
@@ -780,21 +784,27 @@
 
     .quick-cmd-btn {
       font-family: var(--font-mono);
-      font-size: 0.6875rem;
+      font-size: 0.75rem;
       font-weight: 700;
       background: var(--bg-alt);
       border: 1px solid var(--border);
       color: var(--color-viridian);
-      padding: 3px 9px;
+      padding: 5px 12px;
       border-radius: var(--radius-full);
       cursor: pointer;
       transition: var(--transition);
+      user-select: none;
     }
 
     .quick-cmd-btn:hover {
       background: var(--color-viridian);
       color: #FFFFFF;
-      transform: scale(1.05);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(103, 159, 159, 0.4);
+    }
+
+    .quick-cmd-btn:active {
+      transform: scale(0.96);
     }
 
     /* Floating Badges */
@@ -2080,7 +2090,7 @@
           <span>Let's Connect 💬</span>
         </button>
 
-        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle menu">
+        <button class="mobile-menu-btn" id="mobileMenuToggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
@@ -2089,13 +2099,13 @@
 
   <!-- Mobile Drawer -->
   <div class="mobile-drawer" id="mobileDrawer">
-    <a href="#work" class="mobile-nav-link">Engineering Work</a>
-    <a href="#pillars" class="mobile-nav-link">What I Do</a>
-    <a href="#skills" class="mobile-nav-link">Technical Toolkit</a>
-    <a href="#security" class="mobile-nav-link">Cybersecurity &amp; Bug Bounty</a>
-    <a href="#journey" class="mobile-nav-link">Development Journey</a>
-    <a href="#about" class="mobile-nav-link">About &amp; Education</a>
-    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <a href="#work" class="mobile-nav-link" onclick="toggleMobileMenu()">Engineering Work</a>
+    <a href="#pillars" class="mobile-nav-link" onclick="toggleMobileMenu()">What I Do</a>
+    <a href="#skills" class="mobile-nav-link" onclick="toggleMobileMenu()">Technical Toolkit</a>
+    <a href="#security" class="mobile-nav-link" onclick="toggleMobileMenu()">Cybersecurity &amp; Bug Bounty</a>
+    <a href="#journey" class="mobile-nav-link" onclick="toggleMobileMenu()">Development Journey</a>
+    <a href="#about" class="mobile-nav-link" onclick="toggleMobileMenu()">About &amp; Education</a>
+    <a href="#contact" class="mobile-nav-link" onclick="toggleMobileMenu()">Contact</a>
     <div style="display: flex; gap: 10px; margin-top: 10px;">
       <a href="https://github.com/Arfaa26" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-sm" style="flex:1;">GitHub</a>
       <a href="#contact" class="btn btn-candy btn-sm" style="flex:1;">Contact</a>
@@ -2177,22 +2187,24 @@
               </div>
             </div>
 
-            <!-- Input line -->
-            <div class="cli-input-row">
-              <span class="cli-prompt-symbol">$</span>
-              <input type="text" id="cliInput" class="cli-input-field" placeholder="type 'help', 'skills', 'hire', 'projects'..." autocomplete="off" spellcheck="false">
-              <button class="quick-cmd-btn" id="cliEnterBtn" style="background:var(--color-candy); color:#FFF; border:none;">Enter ↵</button>
-            </div>
+            <!-- Input line form -->
+            <form onsubmit="handleCliSubmit(event);" style="margin:0;">
+              <div class="cli-input-row">
+                <span class="cli-prompt-symbol">$</span>
+                <input type="text" id="cliInput" class="cli-input-field" placeholder="type 'help', 'skills', 'hire', 'projects'..." autocomplete="off" spellcheck="false">
+                <button type="submit" class="quick-cmd-btn" id="cliEnterBtn" style="background:var(--color-candy); color:#FFF; border:none;">Enter ↵</button>
+              </div>
+            </form>
 
-            <!-- Quick Chip Buttons -->
+            <!-- Quick Chip Buttons with explicit inline handlers -->
             <div class="cli-quick-commands">
-              <span style="font-size:0.6875rem; color:var(--text-dim); align-self:center;">Quick chips:</span>
-              <button class="quick-cmd-btn" onclick="runCommand('help')">help</button>
-              <button class="quick-cmd-btn" onclick="runCommand('skills')">skills</button>
-              <button class="quick-cmd-btn" onclick="runCommand('projects')">projects</button>
-              <button class="quick-cmd-btn" onclick="runCommand('security')">security</button>
-              <button class="quick-cmd-btn" onclick="runCommand('hire')">sudo hire</button>
-              <button class="quick-cmd-btn" onclick="runCommand('clear')">clear</button>
+              <span style="font-size:0.75rem; color:var(--text-dim); align-self:center; font-weight:600;">Chips:</span>
+              <button type="button" class="quick-cmd-btn" onclick="runCommand('help')">help</button>
+              <button type="button" class="quick-cmd-btn" onclick="runCommand('skills')">skills</button>
+              <button type="button" class="quick-cmd-btn" onclick="runCommand('projects')">projects</button>
+              <button type="button" class="quick-cmd-btn" onclick="runCommand('security')">security</button>
+              <button type="button" class="quick-cmd-btn" onclick="runCommand('hire')">sudo hire</button>
+              <button type="button" class="quick-cmd-btn" onclick="runCommand('clear')">clear</button>
             </div>
           </div>
         </div>
@@ -2370,7 +2382,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
               <span>View Code ↗</span>
             </a>
-            <button class="btn btn-secondary btn-sm" onclick="openModal('profile')">Case Study &rarr;</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="openModal('profile')">Case Study &rarr;</button>
           </div>
         </div>
 
@@ -2440,7 +2452,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
               <span>View Code ↗</span>
             </a>
-            <button class="btn btn-secondary btn-sm" onclick="openModal('fixitnow')">Case Study &rarr;</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="openModal('fixitnow')">Case Study &rarr;</button>
           </div>
         </div>
 
@@ -2499,7 +2511,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
               <span>View Code ↗</span>
             </a>
-            <button class="btn btn-secondary btn-sm" onclick="openModal('aan')">Case Study &rarr;</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="openModal('aan')">Case Study &rarr;</button>
           </div>
         </div>
 
@@ -2560,7 +2572,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
               <span>View Code ↗</span>
             </a>
-            <button class="btn btn-secondary btn-sm" onclick="openModal('festrix')">Case Study &rarr;</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="openModal('festrix')">Case Study &rarr;</button>
           </div>
         </div>
 
@@ -2725,10 +2737,10 @@
             <span style="font-size:0.75rem; color:var(--text-dim); text-transform:none; font-weight:600;">(Click to test mock security vulnerabilities)</span>
           </div>
           <div class="bughunter-actions">
-            <button class="vuln-test-btn active" onclick="testVuln('idor')">Test 1: IDOR Flaw</button>
-            <button class="vuln-test-btn" onclick="testVuln('jwt')">Test 2: JWT Bypass</button>
-            <button class="vuln-test-btn" onclick="testVuln('sqli')">Test 3: SQL Injection</button>
-            <button class="vuln-test-btn" onclick="testVuln('xss')">Test 4: Stored XSS</button>
+            <button type="button" class="vuln-test-btn active" onclick="testVuln(this, 'idor')">Test 1: IDOR Flaw</button>
+            <button type="button" class="vuln-test-btn" onclick="testVuln(this, 'jwt')">Test 2: JWT Bypass</button>
+            <button type="button" class="vuln-test-btn" onclick="testVuln(this, 'sqli')">Test 3: SQL Injection</button>
+            <button type="button" class="vuln-test-btn" onclick="testVuln(this, 'xss')">Test 4: Stored XSS</button>
           </div>
         </div>
         <div class="bughunter-screen" id="vulnScreen">
@@ -2886,10 +2898,10 @@
     <p class="sec-desc">Explore additional engineering repositories across mobile apps, AI/ML, and computer vision with direct 1-click GitHub links.</p>
 
     <div class="filter-tabs">
-      <button class="filter-btn active" data-filter="all">All Projects</button>
-      <button class="filter-btn" data-filter="web">Web &amp; Full-Stack</button>
-      <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
-      <button class="filter-btn" data-filter="ai">AI / ML &amp; Vision</button>
+      <button type="button" class="filter-btn active" data-filter="all" onclick="filterProjects(this, 'all')">All Projects</button>
+      <button type="button" class="filter-btn" data-filter="web" onclick="filterProjects(this, 'web')">Web &amp; Full-Stack</button>
+      <button type="button" class="filter-btn" data-filter="mobile" onclick="filterProjects(this, 'mobile')">Mobile Apps</button>
+      <button type="button" class="filter-btn" data-filter="ai" onclick="filterProjects(this, 'ai')">AI / ML &amp; Vision</button>
     </div>
 
     <div class="secondary-grid">
@@ -3057,7 +3069,7 @@
               <div class="contact-val">arfaalekar@gmail.com</div>
             </div>
           </div>
-          <button class="copy-email-btn" data-copy="arfaalekar@gmail.com">Copy</button>
+          <button type="button" class="copy-email-btn" onclick="copyText(this, 'arfaalekar@gmail.com')">Copy</button>
         </div>
 
         <!-- Phone Number -->
@@ -3071,7 +3083,7 @@
           </div>
           <div style="display:flex; gap:6px;">
             <a href="tel:+918080311237" class="copy-email-btn" style="background:var(--color-viridian); text-decoration:none;">Call</a>
-            <button class="copy-email-btn" data-copy="+918080311237">Copy</button>
+            <button type="button" class="copy-email-btn" onclick="copyText(this, '+918080311237')">Copy</button>
           </div>
         </div>
 
@@ -3120,7 +3132,7 @@
   <!-- CASE STUDY MODAL -->
   <div class="modal-backdrop" id="caseStudyModal">
     <div class="modal-box">
-      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+      <button type="button" class="modal-close-btn" onclick="closeModal()" aria-label="Close modal">&times;</button>
       <div id="modalContent"></div>
     </div>
   </div>
@@ -3128,7 +3140,9 @@
   <!-- JAVASCRIPT LOGIC & INTERACTIVE FEATURES -->
   <script>
     // Set Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    try {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    } catch(e){}
 
     // 1. DYNAMIC TYPEWRITER EFFECT
     const roles = [
@@ -3167,9 +3181,9 @@
 
       setTimeout(typeWriter, speed);
     }
-    setTimeout(typeWriter, 400);
+    setTimeout(typeWriter, 300);
 
-    // 2. GLOBAL THEME TOGGLE FUNCTION (Sandstone Light / Velvet Dark)
+    // 2. GLOBAL THEME TOGGLE
     window.toggleTheme = function() {
       var html = document.documentElement;
       var current = html.getAttribute('data-theme') || 'dark';
@@ -3179,9 +3193,7 @@
       
       try {
         localStorage.setItem('arfa-theme', next);
-      } catch (e) {
-        console.warn('Storage unavailable:', e);
-      }
+      } catch (e) {}
       
       updateThemeButton(next);
       triggerConfetti();
@@ -3190,20 +3202,17 @@
     function updateThemeButton(theme) {
       var btn = document.getElementById('themeToggleBtn');
       if (btn) {
-        // If dark mode active -> show Moon with hint to toggle to light; if light mode -> show Sun
         btn.textContent = theme === 'dark' ? '🌙' : '☀️';
         btn.title = theme === 'dark' ? 'Switch to Sandstone Light Mode' : 'Switch to Velvet Dark Mode';
       }
     }
 
-    // Initialize button state immediately
-    (function initThemeBtn() {
-      var currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-      updateThemeButton(currentTheme);
-    })();
+    try {
+      updateThemeButton(document.documentElement.getAttribute('data-theme') || 'dark');
+    } catch(e){}
 
-    // 3. CONFETTI TRIGGER
-    function triggerConfetti() {
+    // 3. GLOBAL CONFETTI TRIGGER
+    window.triggerConfetti = function() {
       if (typeof confetti === 'function') {
         confetti({
           particleCount: 55,
@@ -3212,118 +3221,135 @@
           colors: ['#E18299', '#679F9F', '#877499', '#E6D4BF', '#7EA2DB']
         });
       }
-    }
+    };
 
-    // 4. RUNNABLE DEVELOPER TERMINAL INTERACTIVITY
-    const cliOutput = document.getElementById('cliOutput');
-    const cliInput = document.getElementById('cliInput');
-    const cliEnterBtn = document.getElementById('cliEnterBtn');
-    const cliBody = document.getElementById('cliBody');
-
-    const commands = {
-      help: () => `
-        <div style="color:var(--color-viridian); font-weight:700;">Available Terminal Commands:</div>
-        <div>&bull; <b>skills</b> &rarr; Display verified technical capabilities</div>
-        <div>&bull; <b>projects</b> &rarr; List primary software applications</div>
-        <div>&bull; <b>education</b> &rarr; View academic &amp; degree info</div>
-        <div>&bull; <b>security</b> &rarr; View cybersecurity research scope</div>
-        <div>&bull; <b>hire</b> / <b>sudo hire</b> &rarr; Recruiter direct action</div>
-        <div>&bull; <b>contact</b> &rarr; Official email &amp; phone number</div>
-        <div>&bull; <b>clear</b> &rarr; Clean terminal screen</div>
-      `,
-      skills: () => `
-        <div style="color:var(--color-candy); font-weight:700;">⚡ Technical Competencies:</div>
-        <div>&bull; <b>Web / Full-Stack:</b> TypeScript, React, Node.js, Express, SQLite, HTML5/CSS3</div>
-        <div>&bull; <b>Engineering Core:</b> C, Python, Data Structures, OOP, Relational Databases</div>
-        <div>&bull; <b>Mobile &amp; AI:</b> Flutter, Dart, Firebase, Gemini AI, OpenCV, MediaPipe</div>
-        <div>&bull; <b>Security:</b> OWASP Top 10, Burp Suite, API Token Auditing, Access Control</div>
-      `,
-      projects: () => `
-        <div style="color:var(--color-azur); font-weight:700;">📁 Featured Engineering Repos:</div>
-        <div>1. <b>ProFile</b> &rarr; AI Resume &amp; Portfolio Builder (React, TS, jsPDF)</div>
-        <div>2. <b>FixItNow</b> &rarr; AI Appliance Diagnostics (Node, SQLite, Gemini AI)</div>
-        <div>3. <b>AAN Security</b> &rarr; Commercial Assessment Platform (Express, REST)</div>
-        <div>4. <b>Festrix</b> &rarr; College Festival Manager (Flutter, Firestore)</div>
-        <div>5. <b>PlantDoc</b> &rarr; Crop Disease Classifier (Python, CNN, OpenCV)</div>
-      `,
-      education: () => `
-        <div style="color:var(--color-viridian); font-weight:700;">🎓 Education Dossier:</div>
-        <div>&bull; <b>Degree:</b> B.E. in Computer Engineering</div>
-        <div>&bull; <b>Institution:</b> Anjuman-i-Islam Kalsekar Technical Campus (Mumbai Univ)</div>
-        <div>&bull; <b>Period:</b> Aug 2023 &ndash; May 2027 (Expected)</div>
-        <div>&bull; <b>Academic SGPA:</b> 7.30 / 10.0</div>
-      `,
-      security: () => `
-        <div style="color:var(--color-candy); font-weight:700;">🛡️ Security Research Focus:</div>
-        <div>&bull; OWASP Top 10 &middot; IDORs &middot; Broken Access Control &middot; JWT Vulnerabilities</div>
-        <div>&bull; Burp Suite Interception &middot; Parameter Fuzzing &middot; Defensive API Hardening</div>
-      `,
-      hire: () => {
+    // 4. GLOBAL RUNNABLE DEVELOPER TERMINAL INTERACTION
+    const terminalCommands = {
+      help: function() {
+        return `
+          <div style="color:var(--color-viridian); font-weight:700;">Available Terminal Commands:</div>
+          <div>&bull; <b>skills</b> &rarr; Display verified technical capabilities</div>
+          <div>&bull; <b>projects</b> &rarr; List primary software applications</div>
+          <div>&bull; <b>education</b> &rarr; View academic &amp; degree info</div>
+          <div>&bull; <b>security</b> &rarr; View cybersecurity research scope</div>
+          <div>&bull; <b>hire</b> / <b>sudo hire</b> &rarr; Recruiter direct action</div>
+          <div>&bull; <b>contact</b> &rarr; Official email &amp; phone number</div>
+          <div>&bull; <b>clear</b> &rarr; Clean terminal screen</div>
+        `;
+      },
+      skills: function() {
+        return `
+          <div style="color:var(--color-candy); font-weight:700;">⚡ Technical Competencies:</div>
+          <div>&bull; <b>Web / Full-Stack:</b> TypeScript, React, Node.js, Express, SQLite, HTML5/CSS3</div>
+          <div>&bull; <b>Engineering Core:</b> C, Python, Data Structures, OOP, Relational Databases</div>
+          <div>&bull; <b>Mobile &amp; AI:</b> Flutter, Dart, Firebase, Gemini AI, OpenCV, MediaPipe</div>
+          <div>&bull; <b>Security:</b> OWASP Top 10, Burp Suite, API Token Auditing, Access Control</div>
+        `;
+      },
+      projects: function() {
+        return `
+          <div style="color:var(--color-azur); font-weight:700;">📁 Featured Engineering Repos:</div>
+          <div>1. <b>ProFile</b> &rarr; AI Resume &amp; Portfolio Builder (React, TS, jsPDF)</div>
+          <div>2. <b>FixItNow</b> &rarr; AI Appliance Diagnostics (Node, SQLite, Gemini AI)</div>
+          <div>3. <b>AAN Security</b> &rarr; Commercial Assessment Platform (Express, REST)</div>
+          <div>4. <b>Festrix</b> &rarr; College Festival Manager (Flutter, Firestore)</div>
+          <div>5. <b>PlantDoc</b> &rarr; Crop Disease Classifier (Python, CNN, OpenCV)</div>
+        `;
+      },
+      education: function() {
+        return `
+          <div style="color:var(--color-viridian); font-weight:700;">🎓 Education Dossier:</div>
+          <div>&bull; <b>Degree:</b> B.E. in Computer Engineering</div>
+          <div>&bull; <b>Institution:</b> Anjuman-i-Islam Kalsekar Technical Campus (Mumbai Univ)</div>
+          <div>&bull; <b>Period:</b> Aug 2023 &ndash; May 2027 (Expected)</div>
+          <div>&bull; <b>Academic SGPA:</b> 7.30 / 10.0</div>
+        `;
+      },
+      security: function() {
+        return `
+          <div style="color:var(--color-candy); font-weight:700;">🛡️ Security Research Focus:</div>
+          <div>&bull; OWASP Top 10 &middot; IDORs &middot; Broken Access Control &middot; JWT Vulnerabilities</div>
+          <div>&bull; Burp Suite Interception &middot; Parameter Fuzzing &middot; Defensive API Hardening</div>
+        `;
+      },
+      hire: function() {
         triggerConfetti();
         return `
           <div style="color:var(--color-candy); font-weight:800; font-size:0.95rem;">🎉 Sudo Access Granted!</div>
-          <div>Arfa Altaf is available for Summer 2025/2026 internships &amp; engineering roles.</div>
+          <div>Arfa Altaf is open to Summer 2025/2026 internships &amp; engineering roles.</div>
           <div style="margin-top:6px;">
             <a href="mailto:arfaalekar@gmail.com" style="color:var(--color-viridian); text-decoration:underline; font-weight:700;">Email: arfaalekar@gmail.com</a> &middot;
             <a href="tel:+918080311237" style="color:var(--color-viridian); text-decoration:underline; font-weight:700;">+91 80803 11237</a>
           </div>
         `;
       },
-      contact: () => `
-        <div style="color:var(--color-viridian); font-weight:700;">📬 Direct Contact Channels:</div>
-        <div>&bull; <b>Email:</b> <a href="mailto:arfaalekar@gmail.com" style="color:var(--color-candy);">arfaalekar@gmail.com</a></div>
-        <div>&bull; <b>Phone:</b> <a href="tel:+918080311237" style="color:var(--color-candy);">+91 80803 11237</a></div>
-        <div>&bull; <b>LinkedIn:</b> <a href="https://www.linkedin.com/in/arfa-altaf-1050a827b/" target="_blank" style="color:var(--color-candy);">linkedin.com/in/arfa-altaf</a></div>
-        <div>&bull; <b>GitHub:</b> <a href="https://github.com/Arfaa26" target="_blank" style="color:var(--color-candy);">github.com/Arfaa26</a></div>
-      `,
-      clear: () => {
-        if (cliOutput) cliOutput.innerHTML = '<div style="color:var(--color-viridian);">Screen cleared. Type \'help\' for available commands.</div>';
+      contact: function() {
+        return `
+          <div style="color:var(--color-viridian); font-weight:700;">📬 Direct Contact Channels:</div>
+          <div>&bull; <b>Email:</b> <a href="mailto:arfaalekar@gmail.com" style="color:var(--color-candy);">arfaalekar@gmail.com</a></div>
+          <div>&bull; <b>Phone:</b> <a href="tel:+918080311237" style="color:var(--color-candy);">+91 80803 11237</a></div>
+          <div>&bull; <b>LinkedIn:</b> <a href="https://www.linkedin.com/in/arfa-altaf-1050a827b/" target="_blank" style="color:var(--color-candy);">linkedin.com/in/arfa-altaf</a></div>
+          <div>&bull; <b>GitHub:</b> <a href="https://github.com/Arfaa26" target="_blank" style="color:var(--color-candy);">github.com/Arfaa26</a></div>
+        `;
+      },
+      clear: function() {
+        var cliOut = document.getElementById('cliOutput');
+        if (cliOut) {
+          cliOut.innerHTML = '<div style="color:var(--color-viridian); font-weight:700;">✨ Interactive Developer Terminal Ready.</div><div style="font-size:0.78125rem; color:var(--text-dim); margin-top:2px;">Screen cleared. Type \'help\' or click a chip.</div>';
+        }
         return '';
       }
     };
 
-    function runCommand(rawCmd) {
-      const cleanCmd = (rawCmd || '').trim().toLowerCase();
-      if (!cleanCmd || !cliOutput) return;
+    window.runCommand = function(rawCmd) {
+      var cleanCmd = (rawCmd || '').trim().toLowerCase();
+      var cliOut = document.getElementById('cliOutput');
+      var cliIn = document.getElementById('cliInput');
+      var cliB = document.getElementById('cliBody');
 
-      const historyLine = document.createElement('div');
-      historyLine.style.marginTop = '8px';
+      if (!cleanCmd || !cliOut) return;
+
+      // Print prompt echo
+      var historyLine = document.createElement('div');
+      historyLine.style.marginTop = '10px';
+      historyLine.style.borderTop = '1px dashed rgba(135,116,153,0.2)';
+      historyLine.style.paddingTop = '6px';
       historyLine.innerHTML = `<span style="color:var(--color-candy); font-weight:800;">$ </span><span style="color:var(--text); font-weight:700;">${cleanCmd}</span>`;
-      cliOutput.appendChild(historyLine);
+      cliOut.appendChild(historyLine);
 
-      let responseHTML = '';
+      var responseHTML = '';
       if (cleanCmd === 'clear') {
-        commands.clear();
+        terminalCommands.clear();
       } else if (cleanCmd === 'sudo hire' || cleanCmd === 'sudo hire arfa' || cleanCmd === 'hire') {
-        responseHTML = commands.hire();
-      } else if (commands[cleanCmd]) {
-        responseHTML = commands[cleanCmd]();
+        responseHTML = terminalCommands.hire();
+      } else if (terminalCommands[cleanCmd]) {
+        responseHTML = terminalCommands[cleanCmd]();
       } else {
-        responseHTML = `<div style="color:var(--color-candy);">Command not found: '${cleanCmd}'. Type 'help' to see all valid commands.</div>`;
+        responseHTML = `<div style="color:var(--color-candy);">Command not recognized: '${cleanCmd}'. Type 'help' to view available commands.</div>`;
       }
 
       if (responseHTML) {
-        const respEl = document.createElement('div');
+        var respEl = document.createElement('div');
         respEl.style.marginTop = '4px';
-        respEl.style.paddingLeft = '12px';
+        respEl.style.paddingLeft = '8px';
         respEl.innerHTML = responseHTML;
-        cliOutput.appendChild(respEl);
+        cliOut.appendChild(respEl);
       }
 
-      if (cliInput) cliInput.value = '';
-      if (cliBody) cliBody.scrollTop = cliBody.scrollHeight;
-    }
+      if (cliIn) cliIn.value = '';
+      if (cliB) cliB.scrollTop = cliB.scrollHeight;
+    };
 
-    if (cliInput) {
-      cliInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') runCommand(cliInput.value);
-      });
-    }
-    if (cliEnterBtn) {
-      cliEnterBtn.addEventListener('click', () => runCommand(cliInput.value));
-    }
+    window.handleCliSubmit = function(e) {
+      if (e) e.preventDefault();
+      var input = document.getElementById('cliInput');
+      if (input && input.value) {
+        window.runCommand(input.value);
+      }
+      return false;
+    };
 
-    // 5. INTERACTIVE BUG HUNTER LAB
+    // 5. GLOBAL BUG HUNTER INTERACTIVE LAB
     const vulnData = {
       idor: {
         title: '[SIMULATION] IDOR (Insecure Direct Object Reference) Test',
@@ -3351,13 +3377,16 @@
       }
     };
 
-    function testVuln(type) {
-      document.querySelectorAll('.vuln-test-btn').forEach(btn => btn.classList.remove('active'));
-      if (window.event && window.event.target) window.event.target.classList.add('active');
-      const data = vulnData[type];
+    window.testVuln = function(btnEl, type) {
+      document.querySelectorAll('.vuln-test-btn').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      if (btnEl) btnEl.classList.add('active');
+
+      var data = vulnData[type];
       if (!data) return;
 
-      const screen = document.getElementById('vulnScreen');
+      var screen = document.getElementById('vulnScreen');
       if (screen) {
         screen.innerHTML = `
           <div style="color:var(--color-candy); font-weight:700;">${data.title}</div>
@@ -3367,72 +3396,60 @@
         `;
       }
       triggerConfetti();
-    }
+    };
 
-    // 6. Mobile Drawer Toggle
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const mobileDrawer = document.getElementById('mobileDrawer');
-    if (mobileMenuToggle && mobileDrawer) {
-      mobileMenuToggle.addEventListener('click', () => {
-        mobileDrawer.classList.toggle('open');
+    // 6. GLOBAL PROJECT FILTERING
+    window.filterProjects = function(btnEl, filter) {
+      document.querySelectorAll('.filter-btn').forEach(function(b) {
+        b.classList.remove('active');
       });
-      document.querySelectorAll('.mobile-nav-link').forEach(l => {
-        l.addEventListener('click', () => mobileDrawer.classList.remove('open'));
-      });
-    }
+      if (btnEl) btnEl.classList.add('active');
 
-    // 7. Scrollspy Navigation
-    const sections = ['work', 'pillars', 'skills', 'security', 'journey', 'about', 'contact'].map(id => document.getElementById(id));
-    const navLinks = document.querySelectorAll('.nav-link');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      const y = window.scrollY + 140;
-      sections.forEach(sec => {
-        if (sec && sec.offsetTop <= y) current = sec.id;
+      document.querySelectorAll('.secondary-card').forEach(function(card) {
+        if (filter === 'all' || card.getAttribute('data-cat') === filter) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
       });
-      navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-      });
-    });
+    };
 
-    // 8. Secondary Projects Filtering
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.secondary-card');
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        projectCards.forEach(card => {
-          if (filter === 'all' || card.dataset.cat === filter) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    // 9. 1-Click Copy with Confetti
-    document.querySelectorAll('.copy-email-btn').forEach(btn => {
-      if (btn.dataset.copy) {
-        btn.addEventListener('click', () => {
-          const text = btn.dataset.copy;
-          navigator.clipboard.writeText(text).then(() => {
-            const orig = btn.textContent;
-            btn.textContent = 'Copied! ✨';
-            btn.classList.add('copied');
-            triggerConfetti();
-            setTimeout(() => {
-              btn.textContent = orig;
-              btn.classList.remove('copied');
-            }, 2200);
-          });
-        });
+    // 7. GLOBAL 1-CLICK COPY FUNCTION
+    window.copyText = function(btnEl, text) {
+      if (!navigator.clipboard) {
+        var textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try { document.execCommand('copy'); } catch (err) {}
+        document.body.removeChild(textArea);
+        handleCopySuccess(btnEl);
+        return;
       }
-    });
+      navigator.clipboard.writeText(text).then(function() {
+        handleCopySuccess(btnEl);
+      });
+    };
 
-    // 10. Case Study Modal
+    function handleCopySuccess(btnEl) {
+      if (!btnEl) return;
+      var orig = btnEl.textContent;
+      btnEl.textContent = 'Copied! ✨';
+      btnEl.classList.add('copied');
+      triggerConfetti();
+      setTimeout(function() {
+        btnEl.textContent = orig;
+        btnEl.classList.remove('copied');
+      }, 2200);
+    }
+
+    // 8. GLOBAL MOBILE MENU TOGGLE
+    window.toggleMobileMenu = function() {
+      var drawer = document.getElementById('mobileDrawer');
+      if (drawer) drawer.classList.toggle('open');
+    };
+
+    // 9. CASE STUDY MODALS
     const caseStudies = {
       profile: {
         tag: 'Full-Stack Web &amp; Document Engine',
@@ -3528,20 +3545,16 @@
       }
     };
 
-    const modalBackdrop = document.getElementById('caseStudyModal');
-    const modalContent = document.getElementById('modalContent');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-
-    function openModal(key) {
-      const data = caseStudies[key];
+    window.openModal = function(key) {
+      var data = caseStudies[key];
       if (!data) return;
 
-      let html = `
+      var html = `
         <div class="modal-tag">${data.tag}</div>
         <h2 class="modal-title">${data.title}</h2>
       `;
 
-      data.sections.forEach(s => {
+      data.sections.forEach(function(s) {
         html += `
           <div class="modal-section">
             <h4 class="modal-section-title">${s.title}</h4>
@@ -3556,28 +3569,41 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
             <span>View Code on GitHub ↗</span>
           </a>
-          <button class="btn btn-secondary btn-sm" onclick="closeModal()">Close Modal</button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="closeModal()">Close Modal</button>
         </div>
       `;
 
-      modalContent.innerHTML = html;
-      modalBackdrop.classList.add('open');
+      var modalContent = document.getElementById('modalContent');
+      var modalBackdrop = document.getElementById('caseStudyModal');
+      if (modalContent) modalContent.innerHTML = html;
+      if (modalBackdrop) modalBackdrop.classList.add('open');
       document.body.style.overflow = 'hidden';
-    }
+    };
 
-    function closeModal() {
-      modalBackdrop.classList.remove('open');
+    window.closeModal = function() {
+      var modalBackdrop = document.getElementById('caseStudyModal');
+      if (modalBackdrop) modalBackdrop.classList.remove('open');
       document.body.style.overflow = '';
-    }
+    };
 
-    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
-    if (modalBackdrop) {
-      modalBackdrop.addEventListener('click', (e) => {
-        if (e.target === modalBackdrop) closeModal();
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') window.closeModal();
+    });
+
+    // 10. Scrollspy Navigation
+    window.addEventListener('scroll', function() {
+      var sections = ['work', 'pillars', 'skills', 'security', 'journey', 'about', 'contact'].map(function(id) {
+        return document.getElementById(id);
       });
-    }
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modalBackdrop && modalBackdrop.classList.contains('open')) closeModal();
+      var navLinks = document.querySelectorAll('.nav-link');
+      var current = '';
+      var y = window.scrollY + 140;
+      sections.forEach(function(sec) {
+        if (sec && sec.offsetTop <= y) current = sec.id;
+      });
+      navLinks.forEach(function(link) {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
     });
   </script>
 </body>
