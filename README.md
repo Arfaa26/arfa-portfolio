@@ -1,37 +1,55 @@
-# Arfa Altaf — Portfolio
+# Arfa Altaf — Developer Portfolio
 
-Personal portfolio website presenting selected projects, technical skills, and contact information.
+Personal developer portfolio presenting full-stack web applications, software engineering projects, cybersecurity research, and academic background.
 
-## Live site
+## Live Website
 
-[View the portfolio](https://arfaa-portfolio.netlify.app/)
+🔗 **[arfaa-portfolio.netlify.app](https://arfaa-portfolio.netlify.app/)**
 
-## About
+---
 
-This repository contains the source for Arfa Altaf's portfolio. The current site is a lightweight, single-page experience designed to introduce her work across web development, Flutter applications, and AI-assisted projects.
+## About Arfa Altaf
 
-## Technology
+- **Degree**: B.E. in Computer Engineering, Anjuman-i-Islam Kalsekar Technical Campus (Aug 2023 – May 2027)
+- **Focus**: Full-Stack Web Development, Software Engineering, Cybersecurity & Bug Bounty Research
+- **Foundation**: Mobile Apps (Flutter) & Computer Vision / AI (Python, OpenCV, MediaPipe)
 
-- HTML
-- CSS
-- JavaScript
-- Netlify deployment
+---
 
-## Run locally
+## Featured Projects (Direct Repositories)
 
-No build step is required.
+1. **[ProFile](https://github.com/Arfaa26/ProFile)** — AI Resume & Portfolio Builder (React, TypeScript, Vite, jsPDF, Mammoth.js, TailwindCSS)
+2. **[FixItNow](https://github.com/Arfaa26/FixItNow)** — AI Appliance Diagnostics Platform (Node.js, Express, SQLite, Gemini Multimodal API, JWT, Docker)
+3. **[AAN Security & IT Solutions](https://github.com/Arfaa26/Security-Camera)** — Interactive Web Platform (Node.js, Express, JavaScript, CSS3, REST APIs)
+4. **[Festrix](https://github.com/Arfaa26/festrix)** — College Festival Management App (Flutter, Dart, Firebase Firestore)
+5. **[PlantDoc](https://github.com/Arfaa26/plantdocc)** — Agricultural Leaf Disease Classifier (Python, TensorFlow, OpenCV)
+6. **[RapidResQ](https://github.com/Arfaa26/RapidResQ)** — Location-Aware Emergency Response Prototype (Flutter, Dart, Geolocator)
 
-1. Clone or download the repository.
-2. Open `ARFA PORTFOLIO.html` in a modern browser.
+---
 
-For local development with automatic reload, serve the repository with any static-file server.
+## Running Locally
+
+No build tools required for the static site.
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Arfaa26/arfa-portfolio.git
+cd arfa-portfolio
+
+# 2. Open index.html in any browser or serve statically
+npx serve .
+```
+
+---
 
 ## Deployment
 
-The public site is hosted on Netlify. Repository and deployment names are intentionally left unchanged to preserve existing links.
+Hosted on **Netlify** with automatic continuous deployment from the main branch.
 
-## Contact
+---
 
-- [GitHub](https://github.com/Arfaa26)
-- [LinkedIn](https://www.linkedin.com/in/arfa-altaf-1050a827b/)
-- [Email](mailto:arfaaltaf26@gmail.com)
+## Contact & Connect
+
+- **GitHub**: [github.com/Arfaa26](https://github.com/Arfaa26)
+- **LinkedIn**: [linkedin.com/in/arfa-altaf](https://www.linkedin.com/in/arfa-altaf-1050a827b/)
+- **Email**: [arfaaltaf26@gmail.com](mailto:arfaaltaf26@gmail.com)
