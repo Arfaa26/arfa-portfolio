@@ -1,6 +1,6 @@
-# Arfa Altaf — Developer Portfolio
+# Arfa Altaf — Computer Engineer & Multi-Disciplinary Software Builder
 
-Personal developer portfolio presenting full-stack web applications, software engineering projects, cybersecurity research, and academic background.
+Personal engineering portfolio showcasing full-stack web applications, mobile platforms, applied AI systems, and cybersecurity research.
 
 ## Live Website
 
@@ -8,16 +8,20 @@ Personal developer portfolio presenting full-stack web applications, software en
 
 ---
 
-## About Arfa Altaf
+## Engineering Overview
 
 - **Degree**: B.E. in Computer Engineering, Anjuman-i-Islam Kalsekar Technical Campus (Aug 2023 – May 2027)
 - **SGPA**: 7.30 / 10.0
-- **Focus**: Full-Stack Web Development, Software Engineering, Cybersecurity & Bug Bounty Research
-- **Foundation**: Mobile Apps (Flutter) & Computer Vision / AI (Python, OpenCV, MediaPipe)
+- **Core Identity**: Computer Engineer & Polyglot Software Builder
+- **Key Domains**:
+  - **Full-Stack Web Development**: React, TypeScript, Node.js, Express, SQLite, REST APIs
+  - **Core Software Engineering**: Data Structures & Algorithms, C, Python, Relational Databases
+  - **Cybersecurity & Bug Bounty**: OWASP Top 10, Burp Suite, API Token Auditing, Access Control Testing
+  - **Mobile & AI Systems**: Flutter, Dart, Firebase, Gemini Multimodal API, OpenCV, MediaPipe
 
 ---
 
-## Featured Projects (Direct Repositories)
+## Featured Projects (Direct GitHub Repositories)
 
 1. **[ProFile](https://github.com/Arfaa26/ProFile)** — AI Resume & Portfolio Builder (React, TypeScript, Vite, jsPDF, Mammoth.js, TailwindCSS)
 2. **[FixItNow](https://github.com/Arfaa26/FixItNow)** — AI Appliance Diagnostics Platform (Node.js, Express, SQLite, Gemini Multimodal API, JWT, Docker)
@@ -25,27 +29,6 @@ Personal developer portfolio presenting full-stack web applications, software en
 4. **[Festrix](https://github.com/Arfaa26/festrix)** — College Festival Management App (Flutter, Dart, Firebase Firestore)
 5. **[PlantDoc](https://github.com/Arfaa26/plantdocc)** — Agricultural Leaf Disease Classifier (Python, TensorFlow, OpenCV)
 6. **[RapidResQ](https://github.com/Arfaa26/RapidResQ)** — Location-Aware Emergency Response Prototype (Flutter, Dart, Geolocator)
-
----
-
-## Running Locally
-
-No build tools required for the static site.
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/Arfaa26/arfa-portfolio.git
-cd arfa-portfolio
-
-# 2. Open index.html in any browser or serve statically
-npx serve .
-```
-
----
-
-## Deployment
-
-Hosted on **Netlify** with automatic continuous deployment from the main branch.
 
 ---
 
