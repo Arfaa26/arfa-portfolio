@@ -52,6 +52,18 @@
   }
   </script>
 
+  <!-- Instant Theme Initializer in HEAD (Prevents FOUC & Guarantees Theme Setup) -->
+  <script>
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem('arfa-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
   <!-- Canvas Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
 
@@ -81,7 +93,7 @@
       --radius-full: 9999px;
       --max-w: 1240px;
       --nav-height: 74px;
-      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* DARK VELVET THEME (Default) */
@@ -101,25 +113,27 @@
       --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.65);
       --badge-bg: rgba(225, 130, 153, 0.18);
       --grid-line: rgba(230, 212, 191, 0.05);
+      --nav-bg: rgba(18, 16, 25, 0.92);
     }
 
     /* CHIC SANDSTONE LIGHT THEME */
     html[data-theme="light"] {
       --bg: #FAF5EE;
-      --bg-alt: #F2E9DC;
+      --bg-alt: #F0E6D8;
       --surface: #FFFFFF;
-      --surface-hover: #FEFCF9;
+      --surface-hover: #F8F3EC;
       --surface-card: #FFFFFF;
-      --border: #E2D5C5;
-      --border-light: #CFBEAA;
-      --text: #1B1622;
-      --text-muted: #564C61;
-      --text-dim: #847991;
+      --border: #E0D3C1;
+      --border-light: #CCBDAA;
+      --text: #1C1724;
+      --text-muted: #584E63;
+      --text-dim: #887C95;
       --shadow-sm: 0 4px 16px rgba(135, 116, 153, 0.12);
       --shadow-md: 0 14px 34px rgba(135, 116, 153, 0.18);
       --shadow-lg: 0 24px 60px rgba(135, 116, 153, 0.22);
       --badge-bg: rgba(225, 130, 153, 0.2);
-      --grid-line: rgba(135, 116, 153, 0.06);
+      --grid-line: rgba(135, 116, 153, 0.08);
+      --nav-bg: rgba(250, 245, 238, 0.94);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -131,6 +145,7 @@
       font-family: var(--font-body);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     body {
@@ -150,6 +165,7 @@
       background-size: 32px 32px;
       pointer-events: none;
       z-index: 0;
+      transition: opacity 0.3s ease;
     }
 
     .bg-glow-1 {
@@ -349,16 +365,12 @@
       left: 0;
       right: 0;
       height: var(--nav-height);
-      background: rgba(18, 16, 25, 0.9);
+      background: var(--nav-bg);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border);
       z-index: 1000;
       transition: var(--transition);
-    }
-
-    html[data-theme="light"] .navbar {
-      background: rgba(250, 245, 238, 0.92);
     }
 
     .nav-wrap {
@@ -441,10 +453,10 @@
       gap: 12px;
     }
 
-    /* Theme Toggle Button */
+    /* THEME TOGGLE BUTTON */
     .theme-toggle-btn {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: var(--surface);
       border: 1.5px solid var(--border);
@@ -454,12 +466,19 @@
       justify-content: center;
       cursor: pointer;
       transition: var(--transition);
-      font-size: 1.2rem;
+      font-size: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      outline: none;
     }
 
     .theme-toggle-btn:hover {
-      transform: rotate(20deg) scale(1.1);
+      transform: scale(1.12) rotate(15deg);
       border-color: var(--color-candy);
+      box-shadow: 0 0 16px rgba(225, 130, 153, 0.4);
+    }
+
+    .theme-toggle-btn:active {
+      transform: scale(0.95);
     }
 
     .mobile-menu-btn {
@@ -2047,8 +2066,8 @@
       </nav>
 
       <div class="nav-actions">
-        <!-- Day / Night Mode Toggle -->
-        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Sandstone Light / Velvet Dark Theme" aria-label="Toggle Theme">
+        <!-- Day / Night Mode Toggle with explicit onclick and title -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Sandstone Light / Velvet Dark Theme" aria-label="Toggle Theme">
           🌙
         </button>
 
@@ -3125,6 +3144,7 @@
     const typewriterEl = document.getElementById('typewriterText');
 
     function typeWriter() {
+      if (!typewriterEl) return;
       const currentRole = roles[roleIndex];
       if (isDeleting) {
         typewriterEl.textContent = currentRole.substring(0, charIndex - 1);
@@ -3149,25 +3169,38 @@
     }
     setTimeout(typeWriter, 400);
 
-    // 2. THEME TOGGLE (Sandstone Light / Velvet Dark)
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const htmlEl = document.documentElement;
-    
-    function setTheme(theme) {
-      htmlEl.setAttribute('data-theme', theme);
-      localStorage.setItem('arfa-theme', theme);
-      themeToggleBtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+    // 2. GLOBAL THEME TOGGLE FUNCTION (Sandstone Light / Velvet Dark)
+    window.toggleTheme = function() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme') || 'dark';
+      var next = current === 'dark' ? 'light' : 'dark';
+      
+      html.setAttribute('data-theme', next);
+      
+      try {
+        localStorage.setItem('arfa-theme', next);
+      } catch (e) {
+        console.warn('Storage unavailable:', e);
+      }
+      
+      updateThemeButton(next);
+      triggerConfetti();
+    };
+
+    function updateThemeButton(theme) {
+      var btn = document.getElementById('themeToggleBtn');
+      if (btn) {
+        // If dark mode active -> show Moon with hint to toggle to light; if light mode -> show Sun
+        btn.textContent = theme === 'dark' ? '🌙' : '☀️';
+        btn.title = theme === 'dark' ? 'Switch to Sandstone Light Mode' : 'Switch to Velvet Dark Mode';
+      }
     }
 
-    const savedTheme = localStorage.getItem('arfa-theme') || 'dark';
-    setTheme(savedTheme);
-
-    themeToggleBtn.addEventListener('click', () => {
-      const current = htmlEl.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      setTheme(next);
-      triggerConfetti();
-    });
+    // Initialize button state immediately
+    (function initThemeBtn() {
+      var currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      updateThemeButton(currentTheme);
+    })();
 
     // 3. CONFETTI TRIGGER
     function triggerConfetti() {
@@ -3244,14 +3277,14 @@
         <div>&bull; <b>GitHub:</b> <a href="https://github.com/Arfaa26" target="_blank" style="color:var(--color-candy);">github.com/Arfaa26</a></div>
       `,
       clear: () => {
-        cliOutput.innerHTML = '<div style="color:var(--color-viridian);">Screen cleared. Type \'help\' for available commands.</div>';
+        if (cliOutput) cliOutput.innerHTML = '<div style="color:var(--color-viridian);">Screen cleared. Type \'help\' for available commands.</div>';
         return '';
       }
     };
 
     function runCommand(rawCmd) {
       const cleanCmd = (rawCmd || '').trim().toLowerCase();
-      if (!cleanCmd) return;
+      if (!cleanCmd || !cliOutput) return;
 
       const historyLine = document.createElement('div');
       historyLine.style.marginTop = '8px';
@@ -3277,8 +3310,8 @@
         cliOutput.appendChild(respEl);
       }
 
-      cliInput.value = '';
-      cliBody.scrollTop = cliBody.scrollHeight;
+      if (cliInput) cliInput.value = '';
+      if (cliBody) cliBody.scrollTop = cliBody.scrollHeight;
     }
 
     if (cliInput) {
