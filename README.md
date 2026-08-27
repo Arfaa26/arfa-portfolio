@@ -11,6 +11,7 @@ Personal developer portfolio presenting full-stack web applications, software en
 ## About Arfa Altaf
 
 - **Degree**: B.E. in Computer Engineering, Anjuman-i-Islam Kalsekar Technical Campus (Aug 2023 – May 2027)
+- **SGPA**: 7.30 / 10.0
 - **Focus**: Full-Stack Web Development, Software Engineering, Cybersecurity & Bug Bounty Research
 - **Foundation**: Mobile Apps (Flutter) & Computer Vision / AI (Python, OpenCV, MediaPipe)
 
@@ -52,4 +53,4 @@ Hosted on **Netlify** with automatic continuous deployment from the main branch.
 
 - **GitHub**: [github.com/Arfaa26](https://github.com/Arfaa26)
 - **LinkedIn**: [linkedin.com/in/arfa-altaf](https://www.linkedin.com/in/arfa-altaf-1050a827b/)
-- **Email**: [arfaaltaf26@gmail.com](mailto:arfaaltaf26@gmail.com)
+- **Email**: [arfaalekar@gmail.com](mailto:arfaalekar@gmail.com)
