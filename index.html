@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arfa Altaf | Computer Engineer &amp; Multi-Disciplinary Software Builder</title>
+  <title>Arfa Altaf | Computer Engineer &amp; Software Builder</title>
   <meta name="description" content="Portfolio of Arfa Altaf — Computer Engineer building full-stack web applications, mobile platforms, applied AI systems, and researching cybersecurity.">
   <meta name="author" content="Arfa Altaf">
   <meta name="keywords" content="Arfa Altaf, Computer Engineer, Software Builder, Full-Stack Web Development, React, TypeScript, Node.js, Express, SQLite, Flutter, Cybersecurity, Bug Bounty, AI, OpenCV">
@@ -81,27 +81,26 @@
       --radius-full: 9999px;
       --max-w: 1240px;
       --nav-height: 74px;
-      --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* DARK VELVET THEME (Default) */
     html[data-theme="dark"] {
-      --bg: #100E17;
-      --bg-alt: #181523;
-      --surface: #201C2E;
-      --surface-hover: #2B253D;
-      --surface-card: rgba(32, 28, 46, 0.88);
-      --border: #322B45;
-      --border-light: #483F63;
-      --text: #FBF8F3;
-      --text-muted: #C8C2D4;
-      --text-dim: #958CA4;
-      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 14px 34px rgba(0, 0, 0, 0.45);
-      --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6);
-      --badge-bg: rgba(225, 130, 153, 0.16);
-      --grid-line: rgba(230, 212, 191, 0.04);
-      --glow-opacity: 0.18;
+      --bg: #121019;
+      --bg-alt: #1A1724;
+      --surface: #221E30;
+      --surface-hover: #2D2840;
+      --surface-card: #221E30;
+      --border: #352E4A;
+      --border-light: #4A4166;
+      --text: #FCFAF6;
+      --text-muted: #CBC5D6;
+      --text-dim: #988EA6;
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 14px 34px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.65);
+      --badge-bg: rgba(225, 130, 153, 0.18);
+      --grid-line: rgba(230, 212, 191, 0.05);
     }
 
     /* CHIC SANDSTONE LIGHT THEME */
@@ -110,18 +109,17 @@
       --bg-alt: #F2E9DC;
       --surface: #FFFFFF;
       --surface-hover: #FEFCF9;
-      --surface-card: rgba(255, 255, 255, 0.92);
+      --surface-card: #FFFFFF;
       --border: #E2D5C5;
       --border-light: #CFBEAA;
       --text: #1B1622;
       --text-muted: #564C61;
       --text-dim: #847991;
-      --shadow-sm: 0 4px 16px rgba(135, 116, 153, 0.1);
-      --shadow-md: 0 14px 34px rgba(135, 116, 153, 0.15);
-      --shadow-lg: 0 24px 60px rgba(135, 116, 153, 0.2);
+      --shadow-sm: 0 4px 16px rgba(135, 116, 153, 0.12);
+      --shadow-md: 0 14px 34px rgba(135, 116, 153, 0.18);
+      --shadow-lg: 0 24px 60px rgba(135, 116, 153, 0.22);
       --badge-bg: rgba(225, 130, 153, 0.2);
       --grid-line: rgba(135, 116, 153, 0.06);
-      --glow-opacity: 0.25;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -144,23 +142,11 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Cursor Sparkle Canvas */
-    #sparkleCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 99999;
-    }
-
-    /* Ambient Floral Atmosphere Blobs */
+    /* Background Ambient Gradients */
     .bg-grid {
       position: fixed;
       inset: 0;
-      background-image: 
-        radial-gradient(circle at 1px 1px, var(--grid-line) 1.5px, transparent 0);
+      background-image: radial-gradient(circle at 1px 1px, var(--grid-line) 1.5px, transparent 0);
       background-size: 32px 32px;
       pointer-events: none;
       z-index: 0;
@@ -168,45 +154,26 @@
 
     .bg-glow-1 {
       position: absolute;
-      top: -150px;
-      left: 8%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(225, 130, 153, var(--glow-opacity)) 0%, rgba(135, 116, 153, 0.08) 55%, transparent 70%);
-      filter: blur(100px);
+      top: -120px;
+      left: 5%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(225, 130, 153, 0.18) 0%, rgba(135, 116, 153, 0.06) 55%, transparent 70%);
+      filter: blur(90px);
       pointer-events: none;
       z-index: 0;
-      animation: floatSlow 10s ease-in-out infinite alternate;
     }
 
     .bg-glow-2 {
       position: absolute;
-      top: 800px;
+      top: 900px;
       right: 5%;
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, rgba(103, 159, 159, var(--glow-opacity)) 0%, rgba(126, 162, 219, 0.08) 55%, transparent 70%);
-      filter: blur(100px);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(103, 159, 159, 0.18) 0%, rgba(126, 162, 219, 0.06) 55%, transparent 70%);
+      filter: blur(90px);
       pointer-events: none;
       z-index: 0;
-      animation: floatSlow 12s ease-in-out infinite alternate-reverse;
-    }
-
-    .bg-glow-3 {
-      position: absolute;
-      top: 2000px;
-      left: 6%;
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, rgba(230, 212, 191, var(--glow-opacity)) 0%, rgba(225, 130, 153, 0.08) 55%, transparent 70%);
-      filter: blur(100px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    @keyframes floatSlow {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(-40px) scale(1.08); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -216,7 +183,6 @@
         transition-duration: 0.001s !important;
         scroll-behavior: auto !important;
       }
-      #sparkleCanvas { display: none !important; }
     }
 
     ::selection {
@@ -240,7 +206,7 @@
 
     /* SECTION HEADINGS */
     section {
-      padding: 100px 0;
+      padding: 90px 0;
       position: relative;
       z-index: 1;
     }
@@ -320,7 +286,6 @@
       border: 1.5px solid transparent;
       white-space: nowrap;
       position: relative;
-      overflow: hidden;
       user-select: none;
     }
 
@@ -384,7 +349,7 @@
       left: 0;
       right: 0;
       height: var(--nav-height);
-      background: rgba(16, 14, 23, 0.85);
+      background: rgba(18, 16, 25, 0.9);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border);
@@ -393,7 +358,7 @@
     }
 
     html[data-theme="light"] .navbar {
-      background: rgba(250, 245, 238, 0.88);
+      background: rgba(250, 245, 238, 0.92);
     }
 
     .nav-wrap {
@@ -541,7 +506,7 @@
 
     /* HERO SECTION */
     .hero {
-      padding: 160px 0 70px;
+      padding: 150px 0 60px;
       position: relative;
     }
 
@@ -549,7 +514,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--surface-card);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       padding: 8px 20px;
       border-radius: var(--radius-full);
@@ -559,7 +524,6 @@
       color: var(--text);
       margin-bottom: 24px;
       box-shadow: var(--shadow-sm);
-      backdrop-filter: blur(12px);
     }
 
     .status-pulse {
@@ -594,7 +558,7 @@
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(2.7rem, 5.2vw, 4.5rem);
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
       font-weight: 900;
       line-height: 1.08;
       letter-spacing: -0.03em;
@@ -612,13 +576,13 @@
     /* Typewriter dynamic text */
     .typewriter-box {
       font-family: var(--font-mono);
-      font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+      font-size: clamp(1.05rem, 1.7vw, 1.3rem);
       font-weight: 700;
       color: var(--color-viridian);
       margin-bottom: 20px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       min-height: 38px;
     }
 
@@ -694,13 +658,12 @@
     }
 
     .interactive-cli-card {
-      background: var(--surface-card);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-lg);
       position: relative;
-      backdrop-filter: blur(20px);
       transition: var(--transition);
     }
 
@@ -867,18 +830,17 @@
 
     /* RECRUITER DOSSIER & PERSPECTIVE */
     .recruiter-section {
-      padding: 30px 0 80px;
+      padding: 20px 0 70px;
     }
 
     .recruiter-card-wrap {
-      background: var(--surface-card);
-      border: 2px solid var(--border);
+      background: var(--surface);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 44px;
+      padding: 40px;
       position: relative;
       overflow: hidden;
       box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(16px);
     }
 
     .recruiter-card-wrap::before {
@@ -963,7 +925,7 @@
     }
 
     .pillar-card {
-      background: var(--surface-card);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 34px 24px;
@@ -971,8 +933,6 @@
       display: flex;
       flex-direction: column;
       box-shadow: var(--shadow-sm);
-      transform-style: preserve-3d;
-      perspective: 1000px;
     }
 
     .pillar-card:hover {
@@ -1028,7 +988,7 @@
       color: var(--color-heather);
     }
 
-    /* FEATURED WORK & 3D TILT CARDS */
+    /* FEATURED WORK */
     .featured-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -1037,7 +997,7 @@
     }
 
     .project-card-premium {
-      background: var(--surface-card);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
@@ -1046,7 +1006,6 @@
       transition: var(--transition);
       position: relative;
       box-shadow: var(--shadow-md);
-      backdrop-filter: blur(14px);
     }
 
     .project-card-premium:hover {
@@ -1208,7 +1167,7 @@
     }
 
     .toolkit-category {
-      background: var(--surface-card);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 30px;
@@ -1271,7 +1230,7 @@
 
     /* CYBERSECURITY LAB & INTERACTIVE BUG HUNTER */
     .security-wrap {
-      background: var(--surface-card);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 50px 44px;
@@ -1466,7 +1425,7 @@
     .timeline-item:nth-child(5) .timeline-dot::after { background: var(--color-candy); }
 
     .timeline-content {
-      background: var(--surface-card);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
       padding: 24px 28px;
@@ -1555,7 +1514,7 @@
     }
 
     .secondary-card {
-      background: var(--surface-card);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
       padding: 28px;
@@ -1655,7 +1614,7 @@
     }
 
     .about-photo-card {
-      background: var(--surface-card);
+      background: var(--surface);
       border: 2px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 16px;
@@ -1697,7 +1656,7 @@
     .about-text p b { color: var(--text); }
 
     .edu-card {
-      background: var(--surface-card);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 32px;
@@ -1773,7 +1732,7 @@
 
     /* CONTACT SECTION */
     .contact-container {
-      background: var(--surface-card);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 60px 48px;
@@ -1919,7 +1878,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(16, 14, 23, 0.88);
+      background: rgba(18, 16, 25, 0.88);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       z-index: 2000;
@@ -1941,12 +1900,6 @@
       padding: 38px;
       position: relative;
       box-shadow: var(--shadow-lg);
-      animation: modalIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(0.95) translateY(10px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     .modal-close-btn {
@@ -2029,18 +1982,6 @@
       flex-wrap: wrap;
     }
 
-    /* REVEAL ANIMATION */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     /* RESPONSIVE DESIGN */
     @media (max-width: 1024px) {
       .hero-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -2066,7 +2007,7 @@
     @media (max-width: 768px) {
       .nav-menu, .nav-actions .btn { display: none; }
       .mobile-menu-btn { display: block; }
-      .hero { padding: 120px 0 50px; }
+      .hero { padding: 110px 0 40px; }
       .recruiter-grid { grid-template-columns: 1fr; }
       .pillars-grid { grid-template-columns: 1fr; }
       .security-cards-grid { grid-template-columns: 1fr; }
@@ -2080,14 +2021,10 @@
 </head>
 <body>
 
-  <!-- Stardust Sparkle Particle Trail Canvas -->
-  <canvas id="sparkleCanvas"></canvas>
-
   <!-- Ambient Grids & Atmospheric Lights -->
   <div class="bg-grid"></div>
   <div class="bg-glow-1"></div>
   <div class="bg-glow-2"></div>
-  <div class="bg-glow-3"></div>
 
   <!-- NAVIGATION -->
   <header class="navbar">
@@ -2163,7 +2100,7 @@
         <!-- Typewriter Dynamic Role Display -->
         <div class="typewriter-box">
           <span>&gt; </span>
-          <span id="typewriterText"></span>
+          <span id="typewriterText">Computer Engineering Student</span>
           <span class="typewriter-cursor"></span>
         </div>
 
@@ -2207,7 +2144,7 @@
               <span class="cli-dot dot-viridian" title="Run projects" onclick="runCommand('projects')"></span>
             </div>
             <div class="cli-title">
-              <span>arfa@terminal: ~ (Type or click chips)</span>
+              <span>arfa@terminal: ~ (Click chips or type)</span>
             </div>
           </div>
 
@@ -2305,7 +2242,7 @@
   </section>
 
   <!-- WHAT I DO / 4 ENGINEERING PILLARS -->
-  <section id="pillars" class="wrap reveal">
+  <section id="pillars" class="wrap">
     <div class="sec-tag"><span class="sparkle">✦</span>Engineering Domains</div>
     <h2 class="sec-title">What I <span class="highlight-viridian">Do</span></h2>
     <p class="sec-desc">
@@ -2377,7 +2314,7 @@
   </section>
 
   <!-- FEATURED PROJECTS -->
-  <section id="work" class="wrap reveal">
+  <section id="work" class="wrap">
     <div class="sec-tag"><span class="sparkle">✦</span>Production &amp; Practical Systems</div>
     <h2 class="sec-title">Featured <span class="highlight-candy">Projects</span></h2>
     <p class="sec-desc">Selected software applications across web, AI diagnostics, commercial systems, and mobile platforms — complete with GitHub repositories and interactive case studies.</p>
@@ -2632,7 +2569,7 @@
   </section>
 
   <!-- TECHNICAL TOOLKIT -->
-  <section id="skills" class="wrap reveal">
+  <section id="skills" class="wrap">
     <div class="sec-tag"><span class="sparkle">✦</span>Verified Stack</div>
     <h2 class="sec-title">Technical <span class="highlight-candy">Toolkit</span></h2>
     <p class="sec-desc">A comprehensive inventory of programming languages, frameworks, databases, and tooling actively utilized across my engineering projects.</p>
@@ -2743,7 +2680,7 @@
   </section>
 
   <!-- CYBERSECURITY LAB & INTERACTIVE BUG HUNTER -->
-  <section id="security" class="wrap reveal">
+  <section id="security" class="wrap">
     <div class="sec-tag"><span class="sparkle">✦</span>Security Engineering</div>
     <h2 class="sec-title">Cybersecurity &amp; <span class="highlight-viridian">Ethical Research</span></h2>
     <p class="sec-desc">A deep dive into application security, vulnerability discovery, and building resilient software systems.</p>
@@ -2820,7 +2757,7 @@
   </section>
 
   <!-- DEVELOPMENT JOURNEY -->
-  <section id="journey" class="wrap reveal">
+  <section id="journey" class="wrap">
     <div class="sec-tag"><span class="sparkle">✦</span>Engineering Evolution</div>
     <h2 class="sec-title">My Development <span class="highlight-candy">Journey</span></h2>
     <p class="sec-desc">How foundational computer engineering coursework progressed into software systems, mobile apps, applied AI, and modern web products.</p>
@@ -2924,7 +2861,7 @@
   </section>
 
   <!-- MORE PROJECTS (FILTERABLE WITH DIRECT GITHUB LINKS) -->
-  <section class="wrap reveal">
+  <section class="wrap">
     <div class="sec-tag"><span class="sparkle">✦</span>Code Repositories</div>
     <h2 class="sec-title">More Things I've <span class="highlight-candy">Built</span></h2>
     <p class="sec-desc">Explore additional engineering repositories across mobile apps, AI/ML, and computer vision with direct 1-click GitHub links.</p>
@@ -3011,7 +2948,7 @@
   </section>
 
   <!-- ABOUT & EDUCATION -->
-  <section id="about" class="wrap reveal">
+  <section id="about" class="wrap">
     <div class="sec-tag"><span class="sparkle">✦</span>Background</div>
     <h2 class="sec-title">About <span class="highlight-candy">Me</span></h2>
 
@@ -3067,7 +3004,7 @@
   </section>
 
   <!-- CONTACT SECTION -->
-  <section id="contact" class="wrap reveal">
+  <section id="contact" class="wrap">
     <div class="contact-container">
       <div>
         <div class="sec-tag"><span class="sparkle">✦</span>Initiate Contact</div>
@@ -3200,17 +3137,17 @@
       let speed = isDeleting ? 35 : 75;
 
       if (!isDeleting && charIndex === currentRole.length) {
-        speed = 2200; // Pause at end of word
+        speed = 2200;
         isDeleting = true;
       } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         roleIndex = (roleIndex + 1) % roles.length;
-        speed = 500; // Pause before new word
+        speed = 500;
       }
 
       setTimeout(typeWriter, speed);
     }
-    typeWriter();
+    setTimeout(typeWriter, 400);
 
     // 2. THEME TOGGLE (Sandstone Light / Velvet Dark)
     const themeToggleBtn = document.getElementById('themeToggleBtn');
@@ -3344,10 +3281,14 @@
       cliBody.scrollTop = cliBody.scrollHeight;
     }
 
-    cliInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') runCommand(cliInput.value);
-    });
-    cliEnterBtn.addEventListener('click', () => runCommand(cliInput.value));
+    if (cliInput) {
+      cliInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') runCommand(cliInput.value);
+      });
+    }
+    if (cliEnterBtn) {
+      cliEnterBtn.addEventListener('click', () => runCommand(cliInput.value));
+    }
 
     // 5. INTERACTIVE BUG HUNTER LAB
     const vulnData = {
@@ -3379,100 +3320,35 @@
 
     function testVuln(type) {
       document.querySelectorAll('.vuln-test-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      if (window.event && window.event.target) window.event.target.classList.add('active');
       const data = vulnData[type];
       if (!data) return;
 
       const screen = document.getElementById('vulnScreen');
-      screen.innerHTML = `
-        <div style="color:var(--color-candy); font-weight:700;">${data.title}</div>
-        <div style="color:var(--text); margin-top:4px;">Request: <code>${data.req}</code></div>
-        <div style="color:var(--color-viridian); margin-top:4px;">${data.result}</div>
-        <div style="color:var(--text-muted); margin-top:2px;"><b>Remediation:</b> ${data.fix}</div>
-      `;
+      if (screen) {
+        screen.innerHTML = `
+          <div style="color:var(--color-candy); font-weight:700;">${data.title}</div>
+          <div style="color:var(--text); margin-top:4px;">Request: <code>${data.req}</code></div>
+          <div style="color:var(--color-viridian); margin-top:4px;">${data.result}</div>
+          <div style="color:var(--text-muted); margin-top:2px;"><b>Remediation:</b> ${data.fix}</div>
+        `;
+      }
       triggerConfetti();
     }
 
-    // 6. STARDUST SPARKLE CURSOR PARTICLE TRAIL
-    const canvas = document.getElementById('sparkleCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    const sparkleColors = ['#E18299', '#679F9F', '#877499', '#E6D4BF', '#7EA2DB'];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    window.addEventListener('mousemove', (e) => {
-      if (Math.random() < 0.35) {
-        particles.push({
-          x: e.clientX,
-          y: e.clientY,
-          size: Math.random() * 3.5 + 1.5,
-          color: sparkleColors[Math.floor(Math.random() * sparkleColors.length)],
-          vx: (Math.random() - 0.5) * 1.5,
-          vy: Math.random() * 1.5 + 0.5,
-          alpha: 1,
-          decay: Math.random() * 0.03 + 0.015
-        });
-      }
-    });
-
-    function animateSparkles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.alpha -= p.decay;
-        if (p.alpha <= 0) {
-          particles.splice(i, 1);
-          i--;
-          continue;
-        }
-        ctx.save();
-        ctx.globalAlpha = p.alpha;
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-      requestAnimationFrame(animateSparkles);
-    }
-    animateSparkles();
-
-    // 7. 3D TILT EFFECT ON CARDS
-    document.querySelectorAll('.project-card-premium, .pillar-card').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -4;
-        const rotateY = ((x - centerX) / centerX) * 4;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
-
-    // 8. Mobile Drawer Toggle
+    // 6. Mobile Drawer Toggle
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const mobileDrawer = document.getElementById('mobileDrawer');
-    mobileMenuToggle.addEventListener('click', () => {
-      mobileDrawer.classList.toggle('open');
-    });
-    document.querySelectorAll('.mobile-nav-link').forEach(l => {
-      l.addEventListener('click', () => mobileDrawer.classList.remove('open'));
-    });
+    if (mobileMenuToggle && mobileDrawer) {
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+      });
+      document.querySelectorAll('.mobile-nav-link').forEach(l => {
+        l.addEventListener('click', () => mobileDrawer.classList.remove('open'));
+      });
+    }
 
-    // 9. Scrollspy Navigation
+    // 7. Scrollspy Navigation
     const sections = ['work', 'pillars', 'skills', 'security', 'journey', 'about', 'contact'].map(id => document.getElementById(id));
     const navLinks = document.querySelectorAll('.nav-link');
     window.addEventListener('scroll', () => {
@@ -3486,16 +3362,7 @@
       });
     });
 
-    // 10. Intersection Observer Reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('in');
-      });
-    }, { threshold: 0.1 });
-    revealEls.forEach(el => io.observe(el));
-
-    // 11. Secondary Projects Filtering
+    // 8. Secondary Projects Filtering
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.secondary-card');
     filterBtns.forEach(btn => {
@@ -3513,7 +3380,7 @@
       });
     });
 
-    // 12. 1-Click Copy with Confetti
+    // 9. 1-Click Copy with Confetti
     document.querySelectorAll('.copy-email-btn').forEach(btn => {
       if (btn.dataset.copy) {
         btn.addEventListener('click', () => {
@@ -3532,7 +3399,7 @@
       }
     });
 
-    // 13. Case Study Modal
+    // 10. Case Study Modal
     const caseStudies = {
       profile: {
         tag: 'Full-Stack Web &amp; Document Engine',
@@ -3670,12 +3537,14 @@
       document.body.style.overflow = '';
     }
 
-    modalCloseBtn.addEventListener('click', closeModal);
-    modalBackdrop.addEventListener('click', (e) => {
-      if (e.target === modalBackdrop) closeModal();
-    });
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) closeModal();
+      });
+    }
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) closeModal();
+      if (e.key === 'Escape' && modalBackdrop && modalBackdrop.classList.contains('open')) closeModal();
     });
   </script>
 </body>
