@@ -4,7 +4,7 @@ Personal engineering portfolio showcasing full-stack web applications, mobile pl
 
 ## Live Website
 
-🔗 **[arfaa-portfolio.netlify.app](https://arfaa-portfolio.netlify.app/)**
+🔗 **[arfa-portfolio.pages.dev](https://arfa-portfolio.pages.dev/)**
 
 ---
 
@@ -34,6 +34,7 @@ Personal engineering portfolio showcasing full-stack web applications, mobile pl
 
 ## Contact & Connect
 
+- **Live URL**: [arfa-portfolio.pages.dev](https://arfa-portfolio.pages.dev/)
 - **GitHub**: [github.com/Arfaa26](https://github.com/Arfaa26)
 - **LinkedIn**: [linkedin.com/in/arfa-altaf](https://www.linkedin.com/in/arfa-altaf-1050a827b/)
 - **Email**: [arfaalekar@gmail.com](mailto:arfaalekar@gmail.com)
