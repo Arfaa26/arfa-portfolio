@@ -54,3 +54,4 @@ Hosted on **Netlify** with automatic continuous deployment from the main branch.
 - **GitHub**: [github.com/Arfaa26](https://github.com/Arfaa26)
 - **LinkedIn**: [linkedin.com/in/arfa-altaf](https://www.linkedin.com/in/arfa-altaf-1050a827b/)
 - **Email**: [arfaalekar@gmail.com](mailto:arfaalekar@gmail.com)
+- **Phone**: [+91 80803 11237](tel:+918080311237)
